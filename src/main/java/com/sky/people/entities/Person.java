@@ -1,13 +1,18 @@
 package com.sky.people.entities;
 
+import javax.validation.constraints.*;
+
 public class Person {
 
     // variables
-
+    @Size(min = 3, max = 50)
     private String name;
 
+    @Min(0)
+    @Max(100)
     private int age;
 
+    @NotNull
     private String job;
 
     // constructors

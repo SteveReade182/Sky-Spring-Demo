@@ -3,6 +3,7 @@ package com.sky.people.rest;
 import com.sky.people.entities.Person;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class PersonController {
     }
 
     @PostMapping("/create")
-    public Person addPerson(@RequestBody Person person) {  // pulls person from the body of the request
+    public Person addPerson(@RequestBody @Valid Person person) {  // pulls person from the body of the request
         this.people.add(person); // add a new person to the list
         return this.people.get(this.people.size() -1); // returns the last person in the list
     }
