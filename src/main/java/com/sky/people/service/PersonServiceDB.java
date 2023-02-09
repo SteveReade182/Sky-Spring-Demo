@@ -43,7 +43,7 @@ public class PersonServiceDB implements PersonService {
     @Override
     public Person remove(int id) {
         Person existing = this.getById(id);
-        this.repo.deleteById(id);
+        this.repo.deleteById(id); // actually does the deleting
         return existing;
     }
 }

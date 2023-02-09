@@ -58,5 +58,11 @@ public class Person {
         this.job = job;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
