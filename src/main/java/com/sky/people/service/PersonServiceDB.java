@@ -1,33 +1,49 @@
 package com.sky.people.service;
 
 import com.sky.people.entities.Person;
+import com.sky.people.persistence.PersonRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class PersonServiceDB implements PersonService {
+
+    private PersonRepo repo;
+
+    public PersonServiceDB(PersonRepo repo) {
+        this.repo = repo;
+    }
 
     @Override
     public Person createPerson(Person p) {
-        return null;
+        return this.repo.save(p);
     }
 
     @Override
     public Person getById(int id) {
-        return null;
+        return this.repo.findById(id).get();
     }
 
     @Override
     public List<Person> getAll() {
-        return null;
+        return this.repo.findAll();
     }
 
     @Override
     public Person update(int id, String name, Integer age, String job) {
-        return null;
+        Person old = this.getById(id);
+
+        if (name != null) old.setName(name);
+        if (age != null) old.setAge(age);
+        if (job != null) old.setJob(job);
+
+        return this.repo.save(old);
     }
 
     @Override
     public Person remove(int id) {
-        return null;
+        Person existing = this.getById(id);
+        this.repo.deleteById(id);
+        return existing;
     }
 }
