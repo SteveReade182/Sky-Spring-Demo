@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.List;
 
+//@autowired -> also injects the dependancy but constructor is better.
 @RestController
 public class PersonController {
     // the service variable is a dependency

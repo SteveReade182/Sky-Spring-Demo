@@ -1,11 +1,16 @@
 package com.sky.people.entities;
 
+import javax.persistence.*;
 import javax.validation.constraints.*;
-
+@Entity // flags this class as a DB entity (table)
 public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto Increment
+    private Integer id;
 
     // variables
     @Size(min = 3, max = 50)
+    @Column(nullable = false) //NOT NULL
     private String name;
 
     @Min(0)
