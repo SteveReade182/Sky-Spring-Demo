@@ -2,13 +2,10 @@ package com.sky.people.rest;
 
 import com.sky.people.entities.Person;
 import com.sky.people.service.PersonService;
-import com.sky.people.service.PersonServiceDB;
-import com.sky.people.service.PersonServiceList;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,35 +17,34 @@ public class PersonController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String greeting(){
-        return "Hello, Steve!";
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public String greeting(){
+//        return "Hello, Steve!";
+//    }
 
     @PostMapping("/create")
     public Person addPerson(@RequestBody @Valid Person person) {  // pulls person from the body of the request
-
+        return this.service.createPerson(person);
     }
 
     @GetMapping("/getAll")
     public List<Person> getAll(){
-
+        return this.service.getAll();
     }
 
     @GetMapping("/get/{id}") // pulls id from the path (url)
     public Person getPerson(@PathVariable int id){
-
-    }
-
-    @DeleteMapping("/remove/{id}")
-    public Person removePerson(@PathVariable int id){
-
+        return this.service.getById(id);
     }
 
     @PatchMapping("/update/{id}")
     public Person updatePerson(@PathVariable int id, @PathParam("name") String name,@PathParam("age") Integer age,@PathParam("job") String job){
-
+        return this.service.update(id,name,age,job);
     }
 
+    @DeleteMapping("/remove/{id}")
+    public Person removePerson(@PathVariable int id){
+        return this.service.remove(id);
+    }
 
 }
