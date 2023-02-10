@@ -19,13 +19,16 @@ public class Person {
 
     @NotNull
     private String job;
+    @NotNull
+    private String niNumber;
 
     // constructors
 
-    public Person(String name, int age, String job) {
+    public Person(String name, int age, String job, String niNumber) {
         this.name = name;
         this.age = age;
         this.job = job;
+        this.niNumber =niNumber;
     }
 
     // REQUIRED must have a default constructor and getters and setters for Spring to work!
@@ -64,5 +67,13 @@ public class Person {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNiNumber() {
+        return niNumber;
+    }
+
+    public void setNiNumber(String niNumber) {
+        this.niNumber = niNumber;
     }
 }
