@@ -39,7 +39,7 @@ public class PersonController {
     }
     @GetMapping("/")
     public String home(){
-        return "Hello - has this worked!";
+        return "Hello - has this worked?";
     }
     @GetMapping("/getAll")
     public List<PersonDTO> getAll(){
