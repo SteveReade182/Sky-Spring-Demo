@@ -37,7 +37,10 @@ public class PersonController {
 
         return new ResponseEntity<PersonDTO>(dto, HttpStatus.CREATED);
     }
-
+    @GetMapping("/")
+    public String home(){
+        return "Hello";
+    }
     @GetMapping("/getAll")
     public List<PersonDTO> getAll(){
         List<Person> found = this.service.getAll();
