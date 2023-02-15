@@ -39,7 +39,7 @@ public class PersonController {
     }
     @GetMapping("/")
     public String home(){
-        return "Hello - this is a test for startup";
+        return "Hello - has this auto started";
     }
     @GetMapping("/getAll")
     public List<PersonDTO> getAll(){
